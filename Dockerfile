@@ -9,6 +9,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app
 
+RUN chmod +x password.py
+
 EXPOSE 8000
 ENV PORT=8000
 ENV BIND=0.0.0.0
