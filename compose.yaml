@@ -1,0 +1,15 @@
+services:
+  ad-password-self-service:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      LDAP_SERVER: "ldaps://contoso.com:636"
+      LDAP_DOMAIN: "CONTOSO"
+      LDAP_SEARCH_ROOT: "DC=contoso,DC=com"
+      LDAP_GROUP_TO_REMOVE: "CN=Default Password Holder,OU=Security Groups,DC=contoso,DC=com"
+      LDAP_CERT_FILE: "/etc/ssl/certs/root-ca.crt"
+      LOG_OLD_PASSWORDS: "true"
+      REMOVE_FROM_GROUP: "true"
+    volumes:
+      - ./certs/root-ca.crt:/etc/ssl/certs/root-ca.crt:ro

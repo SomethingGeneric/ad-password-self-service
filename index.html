@@ -2,6 +2,7 @@
 <html>
  <head>
   <meta http-equiv="X-UA-Compatible" content="IE=8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Change your Contoso password</title>
 
@@ -21,55 +22,79 @@
  </head>
 
  <body>
-  <div id="description" class="rounded">
-   <p>Please use the form below to change the password for your Contoso account.</p>
+  <div class="app-shell">
+   <header class="app-header rounded">
+    <div class="brand-accent" aria-hidden="true"></div>
 
-   <p style="margin-top: 1em;">Your account will not be fully enabled until you change your password.</p>
-  </div>
+    <div class="app-header-text">
+     <h1>Contoso Password Center</h1>
+     <p>Update your password to restore full access to your account.</p>
+    </div>
+   </header>
 
-  <div id="password-form" class="rounded">
-   <div id="password-entry">
-    <form method="POST" id="password-entry-form" action="/password.py">
-     <input title="Username" type="text" id="username" name="username" />
+   <main class="app-content">
+    <section id="description" class="card rounded">
+     <h2>Before you begin</h2>
 
-     <input title="Old password" type="password" id="old_password" name="old_password" />
+     <p>Please use the form below to change the password for your Contoso account.</p>
 
-     <input title="New password" type="password" id="new_password" name="new_password" />
-     <input title="Verify" type="password" id="new_password_verify" name="new_password_verify" />
+     <p>Your account will not be fully enabled until you update your password.</p>
+    </section>
 
-     <div id="validation">
-      <div id="requirements-container">
-       <div id="general-container">
-        General requirements:
+    <section id="password-form" class="card rounded">
+     <div id="password-entry">
+      <form method="POST" id="password-entry-form" action="/password.py">
+       <div class="form-grid">
+        <label for="username">Username</label>
+        <input title="Username" type="text" id="username" name="username" />
 
-        <ul id="requirements"></ul>
+        <label for="old_password">Current password</label>
+        <input title="Old password" type="password" id="old_password" name="old_password" />
+
+        <label for="new_password">New password</label>
+        <input title="New password" type="password" id="new_password" name="new_password" />
+
+        <label for="new_password_verify">Confirm password</label>
+        <input title="Verify" type="password" id="new_password_verify" name="new_password_verify" />
        </div>
 
-       <div id="requirement-classes-container">
-        You must use 3 of these 4 character classes:
+       <div id="validation">
+        <div id="requirements-container">
+         <div id="general-container">
+          General requirements:
 
-        <ul id="requirement-classes"></ul>
+          <ul id="requirements"></ul>
+         </div>
+
+         <div id="requirement-classes-container">
+          Use 3 of these 4 character classes:
+
+          <ul id="requirement-classes"></ul>
+         </div>
+        </div>
+
+        <div id="match-requirement">
+         The verification field does not match your new password.
+        </div>
+
+        <div id="pass-container">
+         Your new password meets the requirements.
+        </div>
        </div>
-      </div>
 
-      <div id="match-requirement">
-       The verification field does not match your new password.
-      </div>
-
-      <div id="pass-container">
-       Your new password meets the requirements.
-      </div>
+       <div class="form-actions">
+        <input type="submit" value="Change my password" />
+       </div>
+      </form>
      </div>
 
-     <input type="submit" value="Change my password!" />
-    </form>
-   </div>
+     <div id="password-form-result-wrapper">
+      <div id="password-form-result"></div>
 
-   <div id="password-form-result-wrapper">
-    <div id="password-form-result"></div>
-
-    <p id="password-try-again-wrapper">Please <a href="javascript:void(0);" id="password-try-again">try again</a>.</p>
-   </div>
+      <p id="password-try-again-wrapper">Please <a href="javascript:void(0);" id="password-try-again">try again</a>.</p>
+     </div>
+    </section>
+   </main>
   </div>
  </body>
 </html>
